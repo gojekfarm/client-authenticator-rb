@@ -1,7 +1,7 @@
 require 'internal_api_authenticator'
 
 module InternalApiAuthenticator
-  module TestHelper
+  module TestHelpers
     def stub_valid_client_credentials
       expect(InternalApiAuthenticator::ApiClient).to receive(:authenticate!).with('client_id', 'valid_pass_key').and_return(true)
       @request.headers['client-id'] = 'client_id'
