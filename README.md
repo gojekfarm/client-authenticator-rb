@@ -30,11 +30,15 @@ Then run `rake db:migrate `
 
 Add following to to controller/base controller where you want clients to be authenticated for all api class
 
-  `include InternalApiAuthenticator::ClientAuthenticable`
+  `include InternalApiAuthenticator::ApiAuthenticable`
 
 for test to pass in above controllers you can use the test_helper methods `stub_valid_client_credentials` and `stub_valid_client_credentials`
 
 Add `config.include InternalApiAuthenticator::TestHelpers` to rails_helper file, so that the test_helper methods are available.
+
+Gem provides a easy way to create the client credentials. You can run following rake task to generate client credentials.
+
+`$ bundle exec rake 'internal_api_authenticator:generate_api_client_credentials[CLIENT_ID]'`
 
 TODO: Add generator to automate all above task like including controller concern and test_helpers
 
