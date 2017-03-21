@@ -1,7 +1,7 @@
 require 'active_support/concern'
 
-module ClientAuthenticator
-  module ClientAuthenticable
+module InternalApiAuthenticator
+  module ApiAuthenticable
     extend ActiveSupport::Concern
 
     included do
@@ -10,7 +10,7 @@ module ClientAuthenticator
 
     def authenticate_client!
       client_id = request.headers['client-id']
-      unless client_id.present? && ClientAuthenticator::ApiClient.authenticate!(client_id, request.headers['pass-key'])
+      unless client_id.present? && InternalApiAuthenticator::ApiClient.authenticate!(client_id, request.headers['pass-key'])
         render json: {'error' => 'unauthorized'}, status: :unauthorized
       end
     end

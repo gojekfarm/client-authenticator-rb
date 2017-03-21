@@ -3,7 +3,7 @@ require 'rails/generators'
 require 'rails/generators/base'
 require 'rails/generators/active_record'
 
-module ClientAuthenticator
+module InternalApiAuthenticator
   class InstallGenerator < Rails::Generators::Base
     include ActiveRecord::Generators::Migration
 

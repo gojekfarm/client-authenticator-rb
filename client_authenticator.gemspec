@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'client_authenticator/version'
+require 'internal_api_authenticator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "client_authenticator"
-  spec.version       = ClientAuthenticator::VERSION
+  spec.name          = "internal_api_authenticator"
+  spec.version       = InternalApiAuthenticator::VERSION
   spec.authors       = ["manoharakshetty"]
   spec.email         = ["manohara@go-jek.com"]
   spec.summary       = %q{ruby gem for authentication of inter-client communication }

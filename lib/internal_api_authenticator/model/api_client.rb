@@ -1,8 +1,8 @@
 require 'active_record'
 
-module ClientAuthenticator
+module InternalApiAuthenticator
   class ApiClient < ActiveRecord::Base
-    self.table_name = 'client_authenticator_api_clients'
+    self.table_name = 'internal_api_authenticator_api_clients'
     validates_uniqueness_of :client_id
     validates_presence_of :client_id, :pass_key
     before_validation :generate_pass_key, on: :create
