@@ -8,7 +8,7 @@ module InternalApiAuthenticator
     before_validation :generate_pass_key, on: :create
 
     def self.authenticate!(client_id, pass_key)
-      where(client_id: client_id, pass_key: pass_key)
+      !where(client_id: client_id, pass_key: pass_key).empty?
     end
 
     private

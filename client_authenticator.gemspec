@@ -6,8 +6,8 @@ require 'internal_api_authenticator/version'
 Gem::Specification.new do |spec|
   spec.name          = "internal_api_authenticator"
   spec.version       = InternalApiAuthenticator::VERSION
-  spec.authors       = ["manoharakshetty"]
-  spec.email         = ["manohara@go-jek.com"]
+  spec.authors       = ["manoharakshetty", "Dinesh Kumar"]
+  spec.email         = ["manohara@go-jek.com", "dineshkumar_cse@hotmail.com"]
   spec.summary       = %q{ruby gem for authentication of inter-client communication }
   spec.license       = "MIT"
 
