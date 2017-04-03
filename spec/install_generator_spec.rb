@@ -22,7 +22,7 @@ module InternalApiAuthenticator
   def change
     create_table :whitelisted_clients do |t|
       t.string :pass_key, unique: true
-      t.string :client_id
+      t.string :client_id, unique: true
 
       t.timestamps null: false
     end
