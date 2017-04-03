@@ -1,8 +1,8 @@
 class CreateApiClients < ActiveRecord::Migration
   def change
-    create_table :internal_api_authenticator_api_clients do |t|
-      t.string :client_id, unique: true
-      t.string :pass_key
+    create_table :<%= config[:table_name] %> do |t|
+      t.string :<%= config[:client_id_field] %>, unique: true
+      t.string :<%= config[:password_field] %>
 
       t.timestamps null: false
     end

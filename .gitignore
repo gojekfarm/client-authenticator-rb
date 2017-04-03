@@ -14,3 +14,4 @@
 mkmf.log
 .idea/
 *.swp
+spec/tmp
