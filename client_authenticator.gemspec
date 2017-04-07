@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["manoharakshetty", "Dinesh Kumar"]
   spec.email         = ["manohara@go-jek.com", "dineshkumar_cse@hotmail.com"]
   spec.summary       = %q{ruby gem for authentication of api clients authentication}
-  spec.license       = "MIT"
+  spec.license       = "GPL~3.0"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
