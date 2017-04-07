@@ -1,4 +1,4 @@
-module InternalApiAuthenticator
+module ClientAuthenticator
 
   class Configuration
     def initialize()

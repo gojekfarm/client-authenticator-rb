@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module InternalApiAuthenticator
+module ClientAuthenticator
   describe InstallGenerator, type: :genearator do
   include GeneratorSpec::TestCase
     root_dir = File.expand_path("../tmp", __FILE__)

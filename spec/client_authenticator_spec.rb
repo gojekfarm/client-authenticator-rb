@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe InternalApiAuthenticator::ApiAuthenticable do
+RSpec.describe ClientAuthenticator do
 
-  include InternalApiAuthenticator::ApiAuthenticable
+  include ClientAuthenticator
 
   class Request
     def initialize(hdrs)
@@ -12,7 +12,7 @@ RSpec.describe InternalApiAuthenticator::ApiAuthenticable do
   end
 
   class Authorizer 
-    include InternalApiAuthenticator::ApiAuthenticable
+    include ClientAuthenticator
     attr_accessor :request
     def render(opts)
     end
@@ -30,7 +30,7 @@ RSpec.describe InternalApiAuthenticator::ApiAuthenticable do
 
     context 'when client id and pass key is sent' do
       it 'when authorised, should not render 401' do
-        expect(InternalApiAuthenticator::ApiClient).to receive(:authenticated?).with(client_id, pass_key).and_return(true)
+        expect(ClientAuthenticator::ApiClient).to receive(:authenticated?).with(client_id, pass_key).and_return(true)
         expect(auth).not_to receive(:render)
 
         auth.authenticate_client!
@@ -38,7 +38,7 @@ RSpec.describe InternalApiAuthenticator::ApiAuthenticable do
 
       it 'when no authenticate fails' do
         expected_opts = {:json=>{"error"=>"unauthorized"}, :status=>:unauthorized}
-        expect(InternalApiAuthenticator::ApiClient).to receive(:authenticated?).with(client_id, pass_key).and_return(false)
+        expect(ClientAuthenticator::ApiClient).to receive(:authenticated?).with(client_id, pass_key).and_return(false)
         expect(auth).to receive(:render).with(expected_opts)
 
         auth.authenticate_client!
@@ -49,7 +49,7 @@ RSpec.describe InternalApiAuthenticator::ApiAuthenticable do
     context 'when client id is not passed' do
       let(:client_id) { nil }
       it 'should render 401' do
-        expect(InternalApiAuthenticator::ApiClient).not_to receive(:authenticated?)
+        expect(ClientAuthenticator::ApiClient).not_to receive(:authenticated?)
         auth.authenticate_client!
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe InternalApiAuthenticator::ApiAuthenticable do
     context 'when client id is not passed' do
       let(:pass_key) { nil }
       it 'should render 401' do
-        expect(InternalApiAuthenticator::ApiClient).not_to receive(:authenticated?)
+        expect(ClientAuthenticator::ApiClient).not_to receive(:authenticated?)
         auth.authenticate_client!
       end
     end
