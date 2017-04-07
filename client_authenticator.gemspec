@@ -5,7 +5,7 @@ require 'client_authenticator/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "client_authenticator"
-  spec.version       = InternalApiAuthenticator::VERSION
+  spec.version       = ClientAuthenticator::VERSION
   spec.authors       = ["manoharakshetty", "Dinesh Kumar"]
   spec.email         = ["manohara@go-jek.com", "dineshkumar_cse@hotmail.com"]
   spec.summary       = %q{ruby gem for authentication of api clients authentication}

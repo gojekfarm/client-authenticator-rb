@@ -12,7 +12,7 @@ module ClientAuthenticator
     def create_migrations
       Dir["#{self.class.source_root}/migrations/*.rb"].sort.each do |filepath|
         name = File.basename(filepath)
-        auth_config = InternalApiAuthenticator.configuration
+        auth_config = ClientAuthenticator.configuration
         destination_name = "db/migrate/#{name}"
         config = { table_name: auth_config.table_name, client_id_field: auth_config.password_field, password_field: auth_config.client_id_field }
         migration_template "migrations/#{name}", destination_name, config

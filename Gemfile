@@ -5,5 +5,4 @@ gemspec
 
 group :test do
   gem 'pry'
-  gem 'pry-debugger-jruby'
 end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ClientAuthenticator do
 
-  include ClientAuthenticator
+  include ClientAuthenticator::ApiAuthenticable
 
   class Request
     def initialize(hdrs)
@@ -12,7 +12,7 @@ RSpec.describe ClientAuthenticator do
   end
 
   class Authorizer 
-    include ClientAuthenticator
+    include ClientAuthenticator::ApiAuthenticable
     attr_accessor :request
     def render(opts)
     end
