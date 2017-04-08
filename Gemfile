@@ -5,4 +5,6 @@ gemspec
 
 group :test do
   gem 'pry'
+  gem 'simplecov'
+  gem 'rubocop'
 end
