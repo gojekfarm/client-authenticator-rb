@@ -19,16 +19,25 @@ RSpec.describe ClientAuthenticator do
   end
 
   context 'client authentication' do
-    let(:client_id) { 'clientid' }
-    let(:pass_key) { 'pass_key' }
+    let!(:client_id) { 'clientid' }
+    let!(:pass_key) { 'pass_key' }
     let(:header) { {'client-id': client_id, 'pass-key': pass_key}.with_indifferent_access }
     let(:request) { Request.new(header) }
     let(:auth) { auth = Authorizer.new
                  auth.request = request
                  auth
     }
+    let(:cache) { double('cache') }
+
 
     context 'when client id and pass key is sent' do
+    before(:each) do
+      expect(Rails).to receive(:cache) { cache }
+      expect(cache).to receive(:fetch).with("#{client_id}_#{pass_key}", { expires_in: 12.hours}) do |&block|
+        block.call
+      end
+    end
+
       it 'when authorised, should not render 401' do
         expect(ClientAuthenticator::ApiClient).to receive(:authenticated?).with(client_id, pass_key).and_return(true)
         expect(auth).not_to receive(:render)
